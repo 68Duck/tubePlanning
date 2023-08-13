@@ -9,8 +9,8 @@ function drawLine(x1, y1, x2, y2, line){
         console.log(x1, y1, x2, y2, line)
         context.beginPath();
 //        console.log(x1, y1, x2, y2)
-        context.moveTo(x1 + canvasRectangle.left, y1 + canvasRectangle.top);
-        context.lineTo(x2 + canvasRectangle.left, y2 + canvasRectangle.top);
+        context.moveTo(x1 - canvasRectangle.left, y1 - canvasRectangle.top - 100);
+        context.lineTo(x2 - canvasRectangle.left, y2 - canvasRectangle.top -100);
         switch (line) {
             case "Metropolitan":
                 context.strokeStyle = '#97015e';
@@ -69,12 +69,13 @@ sendDrawRequest("AMERSHAM", "ALDGATE")
 //context = canvas.getContext('2d');
 //var canvasRectangle = canvas.getBoundingClientRect();
 //
-//canvas.onclick = function(e) {
-//    var x = e.x - canvasRectangle.left;
-//    var y = e.y - canvasRectangle.top;
+canvas.onclick = function(e) {
+    var x = e.x - canvasRectangle.left;
+    var y = e.y - canvasRectangle.top;
+    console.log(x, y);
 //    sendCoordinates(x, y);
 //    requestStation();
-//}
+}
 
 //DRAWING = true;
 //previousX = null

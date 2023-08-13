@@ -42,20 +42,22 @@ def drawRequest():
             route.append(station)
             station = station.parentStation
 
+        print(list(map(lambda x: x.getName(), route)))
+
         points = list(map(lambda x: [solver.getStationCoordinates(x.getName())["x"],
                                    solver.getStationCoordinates(x.getName())["y"],
                                    x.getLine()], route))
 
         lines = []
-        print(points)
+        # print(points)
         for i in range(len(points) - 1):
-            print(i)
-            print(points[i])
-            print(points[i][0])
-            print(points[i][1])
-            print(points[i+1][0])
-            print(points[i+1][1])
-            print(points[i][2])
+            # print(i)
+            # print(points[i])
+            # print(points[i][0])
+            # print(points[i][1])
+            # print(points[i+1][0])
+            # print(points[i+1][1])
+            # print(points[i][2])
             lines.append([points[i][0], points[i][1],
                          points[i+1][0], points[i+1][1], points[i][2]])
 
