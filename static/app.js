@@ -9,12 +9,43 @@ function drawLine(x1, y1, x2, y2, line){
         console.log(x1, y1, x2, y2, line)
         context.beginPath();
 //        console.log(x1, y1, x2, y2)
-        context.moveTo(x1 - canvasRectangle.left, y1 - canvasRectangle.top - 100);
-        context.lineTo(x2 - canvasRectangle.left, y2 - canvasRectangle.top -100);
+        context.moveTo(x1, y1 - 100);
+        context.lineTo(x2, y2 - 100);
         switch (line) {
             case "Metropolitan":
                 context.strokeStyle = '#97015e';
                 break;
+            case "District":
+                context.strokeStyle = '#00843d';
+                break;
+            case "Central ":
+                context.strokeStyle = '#ee2e22';
+                break;
+            case "Piccadilly ":
+                context.strokeStyle = '#1b3f94';
+                break;
+            case "Bakerloo ":
+                context.strokeStyle = '#b05f0f';
+                break;
+            case "Circle ":
+                context.strokeStyle = '#fed105';
+                break;
+            case "H & C":
+                context.strokeStyle = '#f386a0';
+                break;
+            case "Jubilee ":
+                context.strokeStyle = '#959ca1';
+                break;
+            case "Northern ":
+                context.strokeStyle = '#231f20';
+                break;
+            case "Waterloo & City":
+                context.strokeStyle = '#cae9e2';
+                break;
+            case "Victoria":
+                context.strokeStyle = '#069ddc';
+                break;
+
         }
         context.lineWidth = 4;
         context.stroke();
@@ -38,8 +69,17 @@ const sendDrawRequest = async (origin, destination) => {
 
 }
 
-sendDrawRequest("UPMINSTER", "UPNEY")
+sendDrawRequest("UPMINSTER", "ALDGATE EAST")
 sendDrawRequest("AMERSHAM", "ALDGATE")
+sendDrawRequest("EPPING", "WEST RUISLIP")
+sendDrawRequest("WALTHAMSTOW", "BRIXTON")
+sendDrawRequest("KENTON", "MARYLEBONE")
+sendDrawRequest("HATTON CROSS", "COCKFOSTERS")
+sendDrawRequest("GOLDHAWK ROAD", "ROYAL OAK")
+sendDrawRequest("MORDEN", "ANGEL")
+sendDrawRequest("ALDGATE", "SOUTH KENSINGTON")
+sendDrawRequest("BANK", "WATERLOO")
+sendDrawRequest("SOUTHWARK", "STRATFORD")
 
 //const requestStation = async () => {
 //   const url = '/requestStation'; // the URL to send the HTTP request to
