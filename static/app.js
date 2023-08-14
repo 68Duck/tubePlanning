@@ -40,7 +40,7 @@ function drawLine(x1, y1, x2, y2, line){
                 context.strokeStyle = '#231f20';
                 break;
             case "Waterloo & City":
-                context.strokeStyle = '#cae9e2';
+                context.strokeStyle = '#84cdbc';
                 break;
             case "Victoria":
                 context.strokeStyle = '#069ddc';
@@ -68,18 +68,44 @@ const sendDrawRequest = async (origin, destination) => {
     }
 
 }
+//TO BE checked:
+//sendDrawRequest("MONUMENT", "ALDGATE EAST")
+//sendDrawRequest("BAYSWATER", "GLOUCESTER ROAD")
 
-sendDrawRequest("UPMINSTER", "ALDGATE EAST")
-sendDrawRequest("AMERSHAM", "ALDGATE")
-sendDrawRequest("EPPING", "WEST RUISLIP")
-sendDrawRequest("WALTHAMSTOW", "BRIXTON")
-sendDrawRequest("KENTON", "MARYLEBONE")
-sendDrawRequest("HATTON CROSS", "COCKFOSTERS")
-sendDrawRequest("GOLDHAWK ROAD", "ROYAL OAK")
-sendDrawRequest("MORDEN", "ANGEL")
-sendDrawRequest("ALDGATE", "SOUTH KENSINGTON")
-sendDrawRequest("BANK", "WATERLOO")
-sendDrawRequest("SOUTHWARK", "STRATFORD")
+//sendDrawRequest("EDGWARE", "MORDEN")
+//sendDrawRequest("HIGH BARNET", "KENNINGTON")
+//sendDrawRequest("MILL HILL EAST", "MORDEN")
+//
+//sendDrawRequest("CHESHAM", "ALDGATE")
+//sendDrawRequest("AMERSHAM", "WATFORD")
+//sendDrawRequest("UXBRIDGE", "HARROW-ON-THE-HILL")
+//
+//sendDrawRequest("RAYNERS LANE", "COCKFOSTERS")
+//sendDrawRequest("HEATHROW TERMINAL FOUR", "ACTON TOWN")
+//
+//sendDrawRequest("EALING BROADWAY", "TOWER HILL")
+//sendDrawRequest("ALDGATE EAST", "UPMINSTER")
+sendDrawRequest("WIMBLEDON", "KENSINGTON (OLYMPIA)")
+
+//sendDrawRequest("WEST RUISLIP", "EPPING")
+//sendDrawRequest("EALING BROADWAY", "HAINAULT")
+//sendDrawRequest("WOODFORD", "GRANGE HILL")
+//
+//sendDrawRequest("HARROW & WEALDSTONE", "ELEPHANT & CASTLE")
+//
+//sendDrawRequest("STANMORE", "STRATFORD")
+//
+//sendDrawRequest("WATERLOO", "BANK")
+//
+//sendDrawRequest("HAMMERSMITH", "LIVERPOOL STREET")
+//sendDrawRequest("BAYSWATER", "GLOUCESTER ROAD")
+//
+//sendDrawRequest("WALTHAMSTOW", "BRIXTON")
+//sendDrawRequest("", "")
+//sendDrawRequest("", "")
+//sendDrawRequest("", "")
+
+
 
 //const requestStation = async () => {
 //   const url = '/requestStation'; // the URL to send the HTTP request to

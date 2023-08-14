@@ -37,12 +37,10 @@ def drawRequest():
         destination = data["destination"]
         solver = Solver(DB("distances.db", get_db()))
         station = solver.findPath(origin, destination)
-        print(station.getName())
         route = []
         while station.parentStation is not None:
             route.append(station)
             station = station.parentStation
-            print(station.getName())
         route.append(station)
 
         print(list(map(lambda x: x.getName(), route)))
