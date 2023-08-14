@@ -5,10 +5,7 @@ context = canvas.getContext('2d');
 var canvasRectangle = canvas.getBoundingClientRect();
 
 function drawLine(x1, y1, x2, y2, line){
-        console.log("Drawing line")
-        console.log(x1, y1, x2, y2, line)
         context.beginPath();
-//        console.log(x1, y1, x2, y2)
         context.moveTo(x1, y1 - 100);
         context.lineTo(x2, y2 - 100);
         switch (line) {
@@ -59,11 +56,9 @@ const sendDrawRequest = async (origin, destination) => {
    const response = await fetch(url, { method, body, headers });
    const data = await response.text(); // or response.json() if your server returns JSON
    const obj = JSON.parse(data);
-   console.log(obj);
    //Should return a list of pairs of coordinates and line
 
     for (i = 0; i < obj.length; i++) {
-        console.log(obj[i])
         drawLine(obj[i][0], obj[i][1], obj[i][2], obj[i][3], obj[i][4]);
     }
 
@@ -72,35 +67,35 @@ const sendDrawRequest = async (origin, destination) => {
 //sendDrawRequest("MONUMENT", "ALDGATE EAST")
 //sendDrawRequest("BAYSWATER", "GLOUCESTER ROAD")
 
-//sendDrawRequest("EDGWARE", "MORDEN")
-//sendDrawRequest("HIGH BARNET", "KENNINGTON")
-//sendDrawRequest("MILL HILL EAST", "MORDEN")
-//
-//sendDrawRequest("CHESHAM", "ALDGATE")
-//sendDrawRequest("AMERSHAM", "WATFORD")
-//sendDrawRequest("UXBRIDGE", "HARROW-ON-THE-HILL")
-//
-//sendDrawRequest("RAYNERS LANE", "COCKFOSTERS")
-//sendDrawRequest("HEATHROW TERMINAL FOUR", "ACTON TOWN")
-//
-//sendDrawRequest("EALING BROADWAY", "TOWER HILL")
-//sendDrawRequest("ALDGATE EAST", "UPMINSTER")
+sendDrawRequest("EDGWARE", "MORDEN")
+sendDrawRequest("HIGH BARNET", "BATTERSEA POWER STATION")
+sendDrawRequest("MILL HILL EAST", "MORDEN")
+
+sendDrawRequest("CHESHAM", "ALDGATE")
+sendDrawRequest("AMERSHAM", "WATFORD")
+sendDrawRequest("UXBRIDGE", "HARROW-ON-THE-HILL")
+
+sendDrawRequest("RAYNERS LANE", "COCKFOSTERS")
+sendDrawRequest("HEATHROW TERMINAL FOUR", "ACTON TOWN")
+
+sendDrawRequest("EALING BROADWAY", "TOWER HILL")
+sendDrawRequest("ALDGATE EAST", "UPMINSTER")
 sendDrawRequest("WIMBLEDON", "KENSINGTON (OLYMPIA)")
 
-//sendDrawRequest("WEST RUISLIP", "EPPING")
-//sendDrawRequest("EALING BROADWAY", "HAINAULT")
-//sendDrawRequest("WOODFORD", "GRANGE HILL")
-//
-//sendDrawRequest("HARROW & WEALDSTONE", "ELEPHANT & CASTLE")
-//
-//sendDrawRequest("STANMORE", "STRATFORD")
-//
-//sendDrawRequest("WATERLOO", "BANK")
-//
-//sendDrawRequest("HAMMERSMITH", "LIVERPOOL STREET")
-//sendDrawRequest("BAYSWATER", "GLOUCESTER ROAD")
-//
-//sendDrawRequest("WALTHAMSTOW", "BRIXTON")
+sendDrawRequest("WEST RUISLIP", "EPPING")
+sendDrawRequest("EALING BROADWAY", "HAINAULT")
+sendDrawRequest("WOODFORD", "GRANGE HILL")
+
+sendDrawRequest("HARROW & WEALDSTONE", "ELEPHANT & CASTLE")
+
+sendDrawRequest("STANMORE", "STRATFORD")
+
+sendDrawRequest("WATERLOO", "BANK")
+
+sendDrawRequest("HAMMERSMITH", "LIVERPOOL STREET")
+sendDrawRequest("BAYSWATER", "GLOUCESTER ROAD")
+
+sendDrawRequest("WALTHAMSTOW", "BRIXTON")
 //sendDrawRequest("", "")
 //sendDrawRequest("", "")
 //sendDrawRequest("", "")
