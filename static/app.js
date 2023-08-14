@@ -63,44 +63,67 @@ const sendDrawRequest = async (origin, destination) => {
     }
 
 }
+//Start of potential challenge route
+//sendDrawRequest("CHESHAM", "CHALFONT & LATIMER")
+//sendDrawRequest("CHALFONT & LATIMER", "AMERSHAM")
+//sendDrawRequest("AMERSHAM", "NORTH HARROW")
+//sendDrawRequest("RAYNERS LANE", "NORTH EALING")
+//sendDrawRequest("WEST ACTON", "WHITE CITY")
+//sendDrawRequest("WHITE CITY", "WEST RUISLIP")
+//sendDrawRequest("UXBRIDGE", "PRESTON ROAD")
+//sendDrawRequest("HARROW & WEALDSTONE", "ELEPHANT & CASTLE")
+//sendDrawRequest("ELEPHANT & CASTLE", "LONDON BRIDGE")
+//sendDrawRequest("SOUTHWARK", "WEST HAM")
+//sendDrawRequest("WEST HAM", "UPMINSTER")
+//sendDrawRequest("UPMINSTER", "ALDGATE EAST")
+//sendDrawRequest("ALDGATE", "SLOANE SQUARE")
+//sendDrawRequest("VICTORIA", "BRIXTON")
+//sendDrawRequest("STOCKWELL", "KENNNINGTON")
+//sendDrawRequest("KENNINGTON", "BATTERSEA POWER STATION")
+//sendDrawRequest("KENNINGTON", "MORDEN")
+//sendDrawRequest("WIMBLEDON", "EDGWARE ROAD")
+//sendDrawRequest("EDGWARE ROAD", "HAMMERSMITH")
+//sendDrawRequest("HAMMERSMITH", "COCKFOSTERS")
+
+
 //TO BE checked:
 //sendDrawRequest("MONUMENT", "ALDGATE EAST")
 //sendDrawRequest("BAYSWATER", "GLOUCESTER ROAD")
 
-sendDrawRequest("EDGWARE", "MORDEN")
-sendDrawRequest("HIGH BARNET", "BATTERSEA POWER STATION")
-sendDrawRequest("MILL HILL EAST", "MORDEN")
 
-sendDrawRequest("CHESHAM", "ALDGATE")
-sendDrawRequest("AMERSHAM", "WATFORD")
-sendDrawRequest("UXBRIDGE", "HARROW-ON-THE-HILL")
+//Check all stations
+//sendDrawRequest("EDGWARE", "MORDEN")
+//sendDrawRequest("HIGH BARNET", "BATTERSEA POWER STATION")
+//sendDrawRequest("MILL HILL EAST", "MORDEN")
+//
+//sendDrawRequest("CHESHAM", "ALDGATE")
+//sendDrawRequest("AMERSHAM", "WATFORD")
+//sendDrawRequest("UXBRIDGE", "HARROW-ON-THE-HILL")
+//
+//sendDrawRequest("RAYNERS LANE", "COCKFOSTERS")
+//sendDrawRequest("HEATHROW TERMINAL FOUR", "ACTON TOWN")
+//sendDrawRequest("HEATHROW TERMINAL FOUR", "HEATHROW TERMINAL FIVE")
+//
+//sendDrawRequest("EALING BROADWAY", "TOWER HILL")
+//sendDrawRequest("ALDGATE EAST", "UPMINSTER")
+//sendDrawRequest("WIMBLEDON", "KENSINGTON (OLYMPIA)")
+//sendDrawRequest("RICHMOND", "TURNHAM GREEN")
+//
+//sendDrawRequest("WEST RUISLIP", "EPPING")
+//sendDrawRequest("EALING BROADWAY", "HAINAULT")
+//sendDrawRequest("WOODFORD", "GRANGE HILL")
+//
+//sendDrawRequest("HARROW & WEALDSTONE", "ELEPHANT & CASTLE")
+//
+//sendDrawRequest("STANMORE", "STRATFORD")
+//
+//sendDrawRequest("WATERLOO", "BANK")
+//
+//sendDrawRequest("HAMMERSMITH", "LIVERPOOL STREET")
+//sendDrawRequest("BAYSWATER", "GLOUCESTER ROAD")
+//
+//sendDrawRequest("WALTHAMSTOW", "BRIXTON")
 
-sendDrawRequest("RAYNERS LANE", "COCKFOSTERS")
-sendDrawRequest("HEATHROW TERMINAL FOUR", "ACTON TOWN")
-sendDrawRequest("HEATHROW TERMINAL FOUR", "HEATHROW TERMINAL FIVE")
-
-sendDrawRequest("EALING BROADWAY", "TOWER HILL")
-sendDrawRequest("ALDGATE EAST", "UPMINSTER")
-sendDrawRequest("WIMBLEDON", "KENSINGTON (OLYMPIA)")
-sendDrawRequest("RICHMOND", "TURNHAM GREEN")
-
-sendDrawRequest("WEST RUISLIP", "EPPING")
-sendDrawRequest("EALING BROADWAY", "HAINAULT")
-sendDrawRequest("WOODFORD", "GRANGE HILL")
-
-sendDrawRequest("HARROW & WEALDSTONE", "ELEPHANT & CASTLE")
-
-sendDrawRequest("STANMORE", "STRATFORD")
-
-sendDrawRequest("WATERLOO", "BANK")
-
-sendDrawRequest("HAMMERSMITH", "LIVERPOOL STREET")
-sendDrawRequest("BAYSWATER", "GLOUCESTER ROAD")
-
-sendDrawRequest("WALTHAMSTOW", "BRIXTON")
-//sendDrawRequest("", "")
-//sendDrawRequest("", "")
-//sendDrawRequest("", "")
 
 
 
@@ -114,15 +137,29 @@ sendDrawRequest("WALTHAMSTOW", "BRIXTON")
 //   console.log(data);
 //}
 //
-//const sendCoordinates = async (x, y) => {
-//   const url = '/sendCoordinates'; // the URL to send the HTTP request to
-//   const body = JSON.stringify({"x" : x, "y" : y }) // whatever you want to send in the body of the HTTP request
-//   const headers = {'Content-Type': 'application/json'}; // if you're sending JSON to the server
-//   const method = 'POST';
-//   const response = await fetch(url, { method, body, headers });
-//   const data = await response.text(); // or response.json() if your server returns JSON
-//   console.log(data);
-//}
+DRAWING = true;
+previousStation = null;
+
+const sendCoordinates = async (x, y) => {
+   const url = '/sendCoordinates'; // the URL to send the HTTP request to
+   const body = JSON.stringify({"x" : x, "y" : y }) // whatever you want to send in the body of the HTTP request
+   const headers = {'Content-Type': 'application/json'}; // if you're sending JSON to the server
+   const method = 'POST';
+   const response = await fetch(url, { method, body, headers });
+   const data = await response.text(); // or response.json() if your server returns JSON
+   console.log(data);
+   if (data == "nothing"){
+   } else {
+       const obj = JSON.parse(data);
+        DRAWING = !DRAWING;
+        if (DRAWING){
+        nextStation = obj["name"];
+        sendDrawRequest(previousStation, nextStation);
+        console.log(previousStation, nextStation);
+        }
+        previousStation = obj["name"];
+   }
+}
 //
 //requestStation();
 //
@@ -136,7 +173,8 @@ canvas.onclick = function(e) {
     var x = e.x - canvasRectangle.left;
     var y = e.y - canvasRectangle.top;
     console.log(x, y);
-//    sendCoordinates(x, y);
+
+    sendCoordinates(x, y);
 //    requestStation();
 }
 

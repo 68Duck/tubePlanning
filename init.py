@@ -37,6 +37,9 @@ def drawRequest():
         destination = data["destination"]
         solver = Solver(DB("distances.db", get_db()))
         station = solver.findPath(origin, destination)
+        if station is None:
+            print(origin, destination, "FAILED")
+            return "nothing"
         route = []
         while station.parentStation is not None:
             route.append(station)
@@ -82,6 +85,17 @@ def drawRequest():
 #         dbGenerator = DB_generator("distances.db", "distances.csv", get_db())
 #         dbGenerator.addNextStation(data["x"], data["y"])
 #     return "nothing"
+
+@app.route("/sendCoordinates", methods = ["POST"])
+def sendCoordinates():
+    data = request.get_json()
+    if data is None:
+        pass
+    else:
+        db = DB("distances.db", get_db())
+        return db.searchForStation(data["x"], data["y"]) if db.searchForStation(data["x"], data["y"]) is not None else "nothing"
+
+    return "nothing"
 
 @app.route("/")
 def index():
