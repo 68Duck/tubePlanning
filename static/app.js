@@ -86,11 +86,6 @@ const sendDrawRequest = async (origin, destination) => {
 //sendDrawRequest("HAMMERSMITH", "COCKFOSTERS")
 
 
-//TO BE checked:
-//sendDrawRequest("MONUMENT", "ALDGATE EAST")
-//sendDrawRequest("BAYSWATER", "GLOUCESTER ROAD")
-
-
 //Check all stations
 //sendDrawRequest("EDGWARE", "MORDEN")
 //sendDrawRequest("HIGH BARNET", "BATTERSEA POWER STATION")
